@@ -8,18 +8,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>HealthyMe - BMI Calculator</h1>
+    <div class="container mt-5">
+        <h1 class="text-left mb-6">HealthyMe</h1>
+        <h3 class="text-center mb-4 mt-4">BMI Calculator</h3>
         <form id="bmi-form">
-            <label for="weight">Weight (kg):</label>
-            <input type="number" id="weight" required>
-            <label for="height">Height (cm):</label>
-            <input type="number" id="height" required>
-            <button type="submit">Calculate BMI</button>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label for="weight" class="form-label">Weight (kg):</label>
+                    <input type="number" class="form-control" id="weight" required>
+                </div>
+                <div class="col-6">
+                    <label for="height" class="form-label">Height (cm):</label>
+                    <input type="number" class="form-control" id="height" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Calculate BMI</button>
         </form>
-        <div id="result">
-            <p id="bmi-value"></p>
-            <p id="bmi-category"></p>
+        <div id="result" class="mt-4">
+            <p id="bmi-value" class="text-center"></p>
+            <p id="bmi-category" class="text-center"></p>
         </div>
     </div>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
