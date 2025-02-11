@@ -10,16 +10,19 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-left mb-6">HealthyMe</h1>
-        <h3 class="text-center mb-4 mt-4">BMI Calculator</h3>
+        <h3 class="text-center mt-4">BMI Calculator</h3>
         <form id="bmi-form">
             <div class="row mb-3">
+                <div id="error-message">Plese enter valid values!</div>
                 <div class="col-6">
                     <label for="weight" class="form-label">Weight (kg):</label>
-                    <input type="number" class="form-control" id="weight" required>
+                    <input type="text" class="form-control" id="weight" required>
+                    <span id="weight-error" style="color: red; display: none;">Please enter a valid weight!</span>
                 </div>
                 <div class="col-6">
                     <label for="height" class="form-label">Height (cm):</label>
-                    <input type="number" class="form-control" id="height" required>
+                    <input type="text" class="form-control" id="height" required>
+                    <span id="height-error" style="color: red; display: none;">Please enter a valid height!</span>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary w-100">Calculate BMI</button>
