@@ -2,3 +2,6 @@
     color: red;
     visibility: hidden;
 }
+.form-control {
+    text-align: center;
+}
