@@ -2,6 +2,84 @@
     color: red;
     visibility: hidden;
 }
+
 .form-control {
     text-align: center;
+}
+
+.bmi-container {
+    position: relative;
+    width: 100%;
+}
+
+.bmi-bar {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    position: relative;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.bmi-bar div {
+    flex: 1;
+}
+
+.underweight { 
+    background-color: #0d6efd; 
+}
+
+.normal { 
+    background-color: #02d545; 
+}
+
+.overweight { 
+    background-color: #f9e723; 
+}
+
+.obesity { 
+    background-color: #ef2d17; 
+}
+
+.indicator {
+    position: absolute;
+    top: -22px; 
+    left: 50%;
+    font-size: 18px;
+    color: black;
+    transform: translateX(-50%);
+    transition: left 0.5s ease-in-out;
+    z-index: 10; 
+    visibility: hidden;
+}
+
+.bmi-range-labels {
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.bmi-range-labels div {
+    font-size: 14px;
+    color: black;
+    text-align: center;
+    position: absolute;
+}
+
+.bmi-range-labels .underweight-label {
+    left: 0;
+}
+
+.bmi-range-labels .normal-label {
+    left: 25%; 
+}
+
+.bmi-range-labels .overweight-label {
+    left: 50%; 
+}
+
+.bmi-range-labels .obesity-label {
+    left: 75%; 
 }

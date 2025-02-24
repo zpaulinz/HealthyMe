@@ -101,5 +101,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // Display BMI Category
         document.getElementById("bmi-category").textContent = "You have: " + category;
 
+        // Moving the BMI Indicator
+        const minBMI = 10;  // Lower Limit of The Bar
+        const maxBMI = 40;  // Upper Limit of The Bar
+        let indicator = document.getElementById("bmi-indicator");
+
+        // Calculating the Position of The Arrow
+        let percentage = ((bmi - minBMI) / (maxBMI - minBMI)) * 100;
+        percentage = Math.max(0, Math.min(100, percentage));
+
+        // Setting the Position of The Indicator
+        indicator.style.left = percentage + "%";
+        indicator.style.visibility = "visible";
     });
 });

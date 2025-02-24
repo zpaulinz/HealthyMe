@@ -27,10 +27,27 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">Calculate BMI</button>
         </form>
+
         <div id="result" class="mt-4">
             <p id="bmi-value" class="text-center"></p>
             <p id="bmi-category" class="text-center"></p>
         </div>
+
+        <div class="bmi-container">
+        <div class="indicator" id="bmi-indicator">▼</div>
+        <div class="bmi-bar mt-3">
+            <div class="underweight"></div>
+            <div class="normal"></div>
+            <div class="overweight"></div>
+            <div class="obesity"></div>
+        </div>
+        <div class="bmi-range-labels">
+            <div class="underweight-label">underweight</div>
+            <div class="normal-label">normal</div>
+            <div class="overweight-label">overweight</div>
+            <div class="obesity-label">obesity</div>
+        </div>
+    </div>
     </div>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
