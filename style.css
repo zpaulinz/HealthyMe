@@ -83,3 +83,13 @@
 .bmi-range-labels .obesity-label {
     left: 75%; 
 }
+
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    margin-top: 50px;
+    width: 100%;
+}

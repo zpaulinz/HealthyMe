@@ -34,21 +34,50 @@
         </div>
 
         <div class="bmi-container">
-        <div class="indicator" id="bmi-indicator">▼</div>
-        <div class="bmi-bar mt-3">
-            <div class="underweight"></div>
-            <div class="normal"></div>
-            <div class="overweight"></div>
-            <div class="obesity"></div>
+            <div class="indicator" id="bmi-indicator">▼</div>
+                <div class="bmi-bar mt-3">
+                    <div class="underweight"></div>
+                    <div class="normal"></div>
+                    <div class="overweight"></div>
+                    <div class="obesity"></div>
+                </div>
+                <div class="bmi-range-labels">
+                    <div class="underweight-label">underweight</div>
+                    <div class="normal-label">normal</div>
+                    <div class="overweight-label">overweight</div>
+                    <div class="obesity-label">obesity</div>
+                </div>
         </div>
-        <div class="bmi-range-labels">
-            <div class="underweight-label">underweight</div>
-            <div class="normal-label">normal</div>
-            <div class="overweight-label">overweight</div>
-            <div class="obesity-label">obesity</div>
+
+        <div class="table-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Range</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>< 18.5</td>
+                        <td>underweight</td>
+                    </tr>
+                    <tr> 
+                        <td>18.5 - 24.9</td>
+                        <td>normal</td>
+                    </tr>
+                    <tr>      
+                        <td>25 - 29.9</td>
+                        <td>overweight</td>
+                    </tr>
+                    <tr>
+                        <td>>= 30</td>
+                        <td>obesity</td>
+                    </tr>s
+                </tbody>
+            </table>
         </div>
-    </div>
-    </div>
+
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
