@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
         limitIntegerLength(inputElement, 4); // Limiting Integer Length to 4 Digits
     }
 
-    // Function to Limit the Number of Decimal Places to 2
+    // Function to Limit the Number of Decimal Places to 1
     function limitDecimalPlaces(inputElement) {
         let value = inputElement.value;
         
         // If The Value Contains a Decimal Point and more than 2 decimal places
-        if (value.includes('.') && value.split('.')[1].length > 2) {
-            inputElement.value = parseFloat(value).toFixed(2);  // Set to 2 decimal places
+        if (value.includes('.') && value.split('.')[1].length > 1) {
+            inputElement.value = parseFloat(value).toFixed(1);  
         }
     }
 
@@ -52,16 +52,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!/^(?!0(\.0+)?$)([1-9]\d*(\.\d+)?|\d(\.\d+)?$)/.test(value) || parseFloat(value) < 0.01 || parseFloat(value) > 1000) {
             errorElement.style.display = "block";
             inputElement.style.border = "2px solid red";
-            return null;  // Returns null if the value is invalid
+            return null;  // If the value is invalid
         } else {
             errorElement.style.display = "none";
             inputElement.style.border = "";
             
             // Returning the appropriate value based on type
             if (type === 'weight') {
-                return parseFloat(value);  // For weight, return numeric value
+                return parseFloat(value);  // Return numeric value
             } else if (type === 'height') {
-                return parseFloat(value) / 100;  // For height, return value in meters
+                return parseFloat(value) / 100;  // Return value in meters
             }
         }
     }
@@ -83,35 +83,62 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     
         // Calculate BMI
-        let bmi = weight / (height * height);
-        document.getElementById("bmi-value").textContent = "Your BMI: " + bmi.toFixed(2);
+        let bmi = (weight / (height * height)).toFixed(2);
 
-        // Determine BMI Category
+        const minIdealWeight = (18.5 * height * height);
+        const maxIdealWeight = (24.99 * height * height);
+
         let category = "";
+
         if (bmi < 18.5) {
             category = "Underweight";
-        } else if (bmi >= 18.5 && bmi <= 24.9) {
+        } else if (bmi >= 18.5 && bmi <= 24.99) {
             category = "Normal weight";
-        } else if (bmi >= 25 && bmi <= 29.9) {
-            category = "Overweight";
-        } else {
-            category = "Obesity";
+        } else if (bmi >= 25 && bmi < 29.99) { 
+            category = "Overweight"; 
+        } else if (bmi >= 30) { 
+            category = "Obesity"; 
         }
 
-        // Display BMI Category
-        document.getElementById("bmi-category").textContent = "You have: " + category;
+        let roundedBmiDisplay = parseFloat(bmi).toFixed(2);  
 
-        // Moving the BMI Indicator
-        const minBMI = 10;  // Lower Limit of The Bar
-        const maxBMI = 40;  // Upper Limit of The Bar
+        // Update the Message Based on Category
+        let weightChangeMessage = "";
+    
+        if (category === "Underweight") {
+            weightChangeMessage = `You need to gain ${parseFloat(minIdealWeight - weight).toFixed(1)} kg to reach normal weight (${minIdealWeight.toFixed(1)} - ${maxIdealWeight.toFixed(1)} kg).`;
+        } else if (category === "Normal weight") {
+            weightChangeMessage = `Nice work! You're doing great! Your weight's in the healthy range (${minIdealWeight.toFixed(1)} - ${maxIdealWeight.toFixed(1)} kg).`;
+        } else if (category === "Overweight") {
+            weightChangeMessage = `You need to lose ${parseFloat(weight - maxIdealWeight).toFixed(1)} kg to reach normal weight (${minIdealWeight.toFixed(1)} - ${maxIdealWeight.toFixed(1)} kg).`;
+        } else if (category === "Obesity") {
+            weightChangeMessage = `You need to lose ${parseFloat(weight - maxIdealWeight).toFixed(1)} kg to reach normal weight (${minIdealWeight.toFixed(1)} - ${maxIdealWeight.toFixed(1)} kg).`;
+        }
+
+        document.getElementById("bmi-result").textContent = `${category} (BMI ${roundedBmiDisplay})`;
+        document.getElementById("bmi-to-normal").textContent = weightChangeMessage;
+
         let indicator = document.getElementById("bmi-indicator");
+        
+        const categoryWidth = 25; // 4 x 25% → 100% 
+        let percentage = 0;
 
-        // Calculating the Position of The Arrow
-        let percentage = ((bmi - minBMI) / (maxBMI - minBMI)) * 100;
-        percentage = Math.max(0, Math.min(100, percentage));
+        // Normalizing BMI to match position on the scale
+        if (bmi < 18.5) {
+            percentage = (bmi / 18.5) * 25;  // Maps from 0 to 25% of the scale
+        } else if (bmi >= 18.5 && bmi <= 24.99) {
+            percentage = 25 + ((bmi - 18.5) / (24.99 - 18.5)) * 25;  // Maps from 25% to 50%
+        } else if (bmi >= 25 && bmi <= 29.99) {
+            percentage = 50 + ((bmi - 25) / (29.99 - 25)) * 25;  // Maps from 50% to 75%
+        } else if (bmi >= 30) {
+            percentage = 75 + ((bmi - 30) / 70) * 25;  // Maps from 75% to 100%
+        }
+        
+        if (bmi > 100) {
+            percentage = 100;
+        }
 
-        // Setting the Position of The Indicator
         indicator.style.left = percentage + "%";
-        indicator.style.visibility = "visible";
+        indicator.style.visibility = "visible";  
     });
 });

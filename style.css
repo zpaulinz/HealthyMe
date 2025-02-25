@@ -56,17 +56,18 @@
 
 .bmi-range-labels {
     display: flex;
-    position: relative;
     width: 100%;
     justify-content: space-between;
     margin-top: 10px;
+    
 }
 
 .bmi-range-labels div {
     font-size: 14px;
     color: black;
     text-align: center;
-    position: absolute;
+    flex: 1;
+    text-align: left;
 }
 
 .bmi-range-labels .underweight-label {
@@ -97,4 +98,8 @@ table {
 
 #bmi-result {
     font-size: 20px;
+}
+
+#bmi-to-normal {
+    font-weight: bold;
 }
