@@ -8,6 +8,7 @@
 }
 
 .bmi-container {
+    top: 20px;
     position: relative;
     width: 100%;
 }
@@ -92,4 +93,8 @@
 table {
     margin-top: 50px;
     width: 100%;
+}
+
+#bmi-result {
+    font-size: 20px;
 }
